@@ -1,0 +1,8 @@
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\bin\Model.asdatabase
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\bin\Model.deploymenttargets
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\bin\Model.deploymentoptions
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\obj\Development\TabularSSAS.smproj.AssemblyReference.cache
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\obj\Development\TabularSSAS.smproj.CoreCompileInputs.cache
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\obj\Development\Model.asdatabase
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\obj\Development\Model.deploymentoptions
+C:\Users\kumar\source\repos\TabularSSAS\TabularSSAS\obj\Development\Model.deploymenttargets

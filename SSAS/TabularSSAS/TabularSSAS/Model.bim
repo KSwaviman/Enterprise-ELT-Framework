@@ -1,0 +1,188 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/34 65 104 120;APIData",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "34.65.104.120",
+            "database": "APIData"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {
+          "multiSubnetFailover": true
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "sqlserver",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Landing Products",
+        "columns": [
+          {
+            "name": "product_id",
+            "dataType": "string",
+            "sourceColumn": "product_id"
+          },
+          {
+            "name": "product_title",
+            "dataType": "string",
+            "sourceColumn": "product_title"
+          },
+          {
+            "name": "product_description",
+            "dataType": "string",
+            "sourceColumn": "product_description"
+          },
+          {
+            "name": "product_category",
+            "dataType": "string",
+            "sourceColumn": "product_category"
+          },
+          {
+            "name": "product_price",
+            "dataType": "double",
+            "sourceColumn": "product_price",
+            "formatString": "#,0.00 \"€\";-#,0.00 \"€\";#,0.00 \"€\"",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"4096\" DisplayName=\"€ Catalan (Italy)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "discount_percentage",
+            "dataType": "double",
+            "sourceColumn": "discount_percentage"
+          },
+          {
+            "name": "product_rating",
+            "dataType": "string",
+            "sourceColumn": "product_rating"
+          },
+          {
+            "name": "stock_quantity",
+            "dataType": "int64",
+            "sourceColumn": "stock_quantity",
+            "formatString": "0"
+          },
+          {
+            "name": "sku",
+            "dataType": "string",
+            "sourceColumn": "sku"
+          },
+          {
+            "name": "product_weight",
+            "dataType": "string",
+            "sourceColumn": "product_weight"
+          },
+          {
+            "name": "product_width",
+            "dataType": "string",
+            "sourceColumn": "product_width"
+          },
+          {
+            "name": "product_height",
+            "dataType": "string",
+            "sourceColumn": "product_height"
+          },
+          {
+            "name": "product_depth",
+            "dataType": "string",
+            "sourceColumn": "product_depth"
+          },
+          {
+            "name": "warranty_info",
+            "dataType": "string",
+            "sourceColumn": "warranty_info"
+          },
+          {
+            "name": "shipping_info",
+            "dataType": "string",
+            "sourceColumn": "shipping_info"
+          },
+          {
+            "name": "availability_status",
+            "dataType": "string",
+            "sourceColumn": "availability_status"
+          },
+          {
+            "name": "created_at",
+            "dataType": "string",
+            "sourceColumn": "created_at"
+          },
+          {
+            "name": "updated_at",
+            "dataType": "string",
+            "sourceColumn": "updated_at"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/34 65 104 120;APIData\",",
+                "    Landing_Products = Source{[Schema=\"Landing\",Item=\"Products\"]}[Data]",
+                "in",
+                "    Landing_Products"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Average Price",
+            "expression": " AVERAGE('Landing Products'[product_price])",
+            "formatString": "#,0.00 \"€\";-#,0.00 \"€\";#,0.00 \"€\"",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4096\" DisplayName=\"€ Catalan (Italy)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total Stock Value",
+            "expression": " SUMX('Landing Products','Landing Products'[product_price]*'Landing Products'[stock_quantity])"
+          },
+          {
+            "name": "Total Products",
+            "expression": " COUNTROWS('Landing Products')"
+          },
+          {
+            "name": "Total Stock Quantity",
+            "expression": " SUM('Landing Products'[stock_quantity])"
+          },
+          {
+            "name": "Average Discount",
+            "expression": " AVERAGE('Landing Products'[discount_percentage])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
