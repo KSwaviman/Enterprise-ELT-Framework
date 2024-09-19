@@ -1,0 +1,25 @@
+name: my_gcp_project
+version: '1.0'
+profile: my_gcp_project
+
+config-version: 2
+
+# This is where your models will live:
+model-paths: ["transformation"]
+
+# This is where you'll put macros that can be used in your project:
+macro-paths: ["macros"]
+
+# You can also specify directories for analyses and tests, like so:
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+
+# Models configuration
+models:
+  my_gcp_project:
+
+    products:
+      materialized: table
+    add_columns:
+      materialized: table
+      depends_on: ['products']  # Ensures products runs before this

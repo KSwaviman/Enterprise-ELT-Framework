@@ -1,0 +1,9 @@
+airbyte-cdk
+apache-airflow
+apache-airflow-providers-airbyte
+dbt-core
+dbt-sqlserver
+prefect 
+prefect-airbyte 
+prefect-dbt
+pydantic==1.10.7
