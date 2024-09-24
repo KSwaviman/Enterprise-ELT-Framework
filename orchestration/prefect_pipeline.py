@@ -1,40 +1,67 @@
-import requests
+import os
+
+# Set environment variables before importing Prefect
+os.environ["PREFECT_API_URL"] = "http://127.0.0.1:4200/api"
+os.environ["PREFECT_LOGGING_LEVEL"] = "DEBUG"
+
+# Now import Prefect and other modules
 from prefect import flow, task
-from prefect_dbt.cli.commands import DbtCoreOperation
+import subprocess
+import requests
 from requests.auth import HTTPBasicAuth
+import logging  # Add this line
+from prefect.logging import get_logger
+
+logger = get_logger()
+logger.setLevel(logging.DEBUG)
 
 @task
 def trigger_airbyte_sync():
-    airbyte_url = "http://localhost:8000/api/v1/connections/sync"  # Adjust if your Airbyte is hosted elsewhere
+    airbyte_url = "http://host.docker.internal:8000/api/v1/connections/sync"
     connection_id = "faeebcd1-a142-4815-aa01-5fdb4c84a779"
     
-    # Airbyte default credentials or your custom credentials
     username = "airbyte"  # Replace with your Airbyte username
     password = "password"  # Replace with your Airbyte password
     
     # Trigger Airbyte sync via API with Basic Authentication
-    response = requests.post(airbyte_url, json={"connectionId": connection_id}, auth=HTTPBasicAuth(username, password))
+    response = requests.post(
+        airbyte_url, 
+        json={"connectionId": connection_id}, 
+        auth=HTTPBasicAuth(username, password)
+    )
     
     if response.status_code == 200:
-        print("Airbyte sync triggered successfully")
+        logger.info("Airbyte sync triggered successfully")
     else:
-        print(f"Failed to trigger Airbyte sync: {response.status_code}, {response.text}")
+        logger.error(f"Failed to trigger Airbyte sync: {response.status_code}, {response.text}")
         response.raise_for_status()
 
 @task
-def run_dbt_transformation():
-    dbt_run = DbtCoreOperation(
-        commands=["dbt run"],
-        project_dir="D:/ELTv2",  # Path to your dbt project folder
-        profiles_dir="C:/Users/kumar/.dbt",  # Directory containing profiles.yml
-    )
-    dbt_run.run()
-
+def run_dbt_via_subprocess():
+    command = ["dbt", "run"]
+    env = os.environ.copy()
+    env["DBT_PROFILES_DIR"] = "/root/.dbt"  # Ensure the correct path
+    
+    try:
+        result = subprocess.run(
+            command, 
+            cwd="/app", 
+            env=env, 
+            check=True, 
+            text=True, 
+            capture_output=True
+        )
+        logger.info("DBT Output:\n" + result.stdout)  # Log DBT output
+        if result.stderr:
+            logger.warning("DBT Errors:\n" + result.stderr)  # Log any DBT errors
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Error running dbt: {e.stderr}")  # Log the detailed dbt error
+        raise
 
 @flow
 def elt_pipeline():
-    airbyte_sync = trigger_airbyte_sync()
-    dbt_transform = run_dbt_transformation()
+    trigger_airbyte_sync()
+    run_dbt_via_subprocess()
 
 # Run the flow
 if __name__ == "__main__":

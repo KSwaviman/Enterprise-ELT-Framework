@@ -2411,3 +2411,940 @@ USE [APIData];
 [0m11:59:20.018402 [debug] [MainThread]: Command `dbt run` succeeded at 11:59:20.018402 after 5.77 seconds
 [0m11:59:20.019402 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A988D0460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A9CD38A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018A9CD95990>]}
 [0m11:59:20.020406 [debug] [MainThread]: Flushing usage events
+[0m13:37:49.691595 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD05070580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD07A87550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD07A87370>]}
+
+
+============================== 13:37:49.698554 | 40438726-5f3d-4c18-8034-b2263b43cb8b ==============================
+[0m13:37:49.698554 [info ] [MainThread]: Running with dbt=1.8.6
+[0m13:37:49.699552 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\kumar\\.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'D:\\ELTv2\\logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt run --profiles-dir C:\\Users\\kumar\\.dbt --project-dir D:\\ELTv2', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m13:37:56.400231 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD05105BA0>]}
+[0m13:37:56.572671 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD07A862F0>]}
+[0m13:37:56.574679 [info ] [MainThread]: Registered adapter: sqlserver=1.8.2
+[0m13:37:56.646163 [debug] [MainThread]: checksum: 2f2fb10c73cafe3e79aa104295a8244291492b32b5598ce46af770f7d0bd5194, vars: {}, profile: , target: , version: 1.8.6
+[0m13:37:59.130295 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:37:59.132290 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:37:59.158261 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.my_gcp_project.add_columns
+[0m13:37:59.283714 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD095A9C00>]}
+[0m13:37:59.744030 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD082EBB80>]}
+[0m13:37:59.745716 [info ] [MainThread]: Found 1 model, 492 macros
+[0m13:37:59.747733 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD082E8FD0>]}
+[0m13:37:59.752301 [info ] [MainThread]: 
+[0m13:37:59.754297 [debug] [MainThread]: Acquiring new sqlserver connection 'master'
+[0m13:37:59.759294 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData'
+[0m13:37:59.807128 [debug] [ThreadPool]: dbt-sqlserver
+[0m13:37:59.810048 [debug] [ThreadPool]: Using sqlserver connection "list_APIData"
+[0m13:37:59.812265 [debug] [ThreadPool]: On list_APIData: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData"} */
+select  name as [schema]
+    from sys.schemas with (nolock) 
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m13:37:59.814102 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:37:59.815738 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:38:00.496284 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m13:38:00.541991 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m13:38:00.545991 [debug] [ThreadPool]: On list_APIData: Close
+[0m13:38:00.548993 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData_Landing'
+[0m13:38:00.574589 [debug] [ThreadPool]: dbt-sqlserver
+[0m13:38:00.576807 [debug] [ThreadPool]: Using sqlserver connection "list_APIData_Landing"
+[0m13:38:00.578438 [debug] [ThreadPool]: On list_APIData_Landing: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData_Landing"} */
+USE [APIData];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'Landing'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m13:38:00.579517 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:38:00.580049 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:38:00.581120 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m13:38:00.670300 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m13:38:00.673301 [debug] [ThreadPool]: On list_APIData_Landing: ROLLBACK
+[0m13:38:00.674307 [debug] [ThreadPool]: On list_APIData_Landing: Close
+[0m13:38:00.677305 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD0833BB80>]}
+[0m13:38:00.678301 [debug] [MainThread]: On master: COMMIT
+[0m13:38:00.679300 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m13:38:00.680301 [info ] [MainThread]: 
+[0m13:38:00.688300 [debug] [Thread-1 (]: Began running node model.my_gcp_project.products
+[0m13:38:00.689302 [info ] [Thread-1 (]: 1 of 1 START sql table model Landing.Products .................................. [RUN]
+[0m13:38:00.691301 [debug] [Thread-1 (]: Acquiring new sqlserver connection 'model.my_gcp_project.products'
+[0m13:38:00.692301 [debug] [Thread-1 (]: Began compiling node model.my_gcp_project.products
+[0m13:38:00.712340 [debug] [Thread-1 (]: Writing injected SQL for node "model.my_gcp_project.products"
+[0m13:38:00.718334 [debug] [Thread-1 (]: Began executing node model.my_gcp_project.products
+[0m13:38:00.810807 [debug] [Thread-1 (]: dbt-sqlserver
+[0m13:38:00.823808 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw"
+[0m13:38:00.838215 [debug] [Thread-1 (]: dbt-sqlserver
+[0m13:38:00.839226 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:38:00.840230 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+        USE [APIData];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'APIData'
+        and refs.referenced_schema_name = 'Landing'
+        and refs.referenced_entity_name = 'Products__dbt_tmp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-sqlserver');
+
+      
+[0m13:38:00.841226 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m13:38:00.843225 [debug] [Thread-1 (]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:38:00.962503 [debug] [Thread-1 (]: sqlserver adapter: Connected to db: APIData
+[0m13:38:01.019079 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:38:01.022079 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:38:01.024078 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+      
+    
+    USE [APIData];
+    EXEC('DROP view IF EXISTS "Landing"."Products__dbt_tmp__dbt_tmp_vw";');
+
+[0m13:38:01.049078 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:38:01.077077 [debug] [Thread-1 (]: Writing runtime sql for node "model.my_gcp_project.products"
+[0m13:38:01.078078 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:38:01.080850 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+  
+    USE [APIData];
+    USE [APIData];
+    
+    
+
+    
+
+    
+    USE [APIData];
+    EXEC('
+        create view "Landing"."Products__dbt_tmp__dbt_tmp_vw" as -- transformation/products.sql
+
+
+
+
+with raw_data as (
+    select
+        -- Extract the main fields from the JSON in _airbyte_data
+        JSON_VALUE(_airbyte_data, ''$.id'') as product_id,
+        JSON_VALUE(_airbyte_data, ''$.title'') as product_title,
+        JSON_VALUE(_airbyte_data, ''$.description'') as product_description,
+        JSON_VALUE(_airbyte_data, ''$.category'') as product_category,
+        JSON_VALUE(_airbyte_data, ''$.price'') as product_price,
+        JSON_VALUE(_airbyte_data, ''$.discountPercentage'') as discount_percentage,
+        JSON_VALUE(_airbyte_data, ''$.rating'') as product_rating,
+        JSON_VALUE(_airbyte_data, ''$.stock'') as stock_quantity,
+        JSON_VALUE(_airbyte_data, ''$.sku'') as sku,
+        JSON_VALUE(_airbyte_data, ''$.weight'') as product_weight,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.width'') as product_width,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.height'') as product_height,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.depth'') as product_depth,
+        JSON_VALUE(_airbyte_data, ''$.warrantyInformation'') as warranty_info,
+        JSON_VALUE(_airbyte_data, ''$.shippingInformation'') as shipping_info,
+        JSON_VALUE(_airbyte_data, ''$.availabilityStatus'') as availability_status,
+        JSON_VALUE(_airbyte_data, ''$.meta.createdAt'') as created_at,
+        JSON_VALUE(_airbyte_data, ''$.meta.updatedAt'') as updated_at
+    from Landing.Landing_raw__stream_API_Source_Connector
+)
+
+select * from raw_data;;
+    ')
+
+EXEC('
+            SELECT * INTO "APIData"."Landing"."Products__dbt_tmp" FROM "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-sqlserver'');
+
+        ')
+
+    
+    EXEC('DROP VIEW IF EXISTS Landing.Products__dbt_tmp__dbt_tmp_vw')
+
+
+
+    
+    use [APIData];
+    if EXISTS (
+        SELECT *
+        FROM sys.indexes with (nolock)
+        WHERE name = 'Landing_Products__dbt_tmp_cci'
+        AND object_id=object_id('Landing_Products__dbt_tmp')
+    )
+    DROP index "Landing"."Products__dbt_tmp".Landing_Products__dbt_tmp_cci
+    CREATE CLUSTERED COLUMNSTORE INDEX Landing_Products__dbt_tmp_cci
+    ON "Landing"."Products__dbt_tmp"
+
+   
+
+
+  
+[0m13:38:01.313666 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:38:01.325665 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:38:01.326665 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+USE [APIData];
+      EXEC sp_rename 'Landing.Products', 'Products__dbt_backup'
+[0m13:38:01.983938 [debug] [Thread-1 (]: SQL status: OK in 1.000 seconds
+[0m13:38:01.990934 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:38:01.991933 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+USE [APIData];
+      EXEC sp_rename 'Landing.Products__dbt_tmp', 'Products'
+[0m13:38:02.019376 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:38:02.067945 [debug] [Thread-1 (]: On model.my_gcp_project.products: COMMIT
+[0m13:38:02.079948 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_backup"
+[0m13:38:02.082944 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:38:02.083945 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+    USE [APIData];
+    EXEC('DROP table IF EXISTS "Landing"."Products__dbt_backup";');
+
+[0m13:38:02.115943 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:38:02.119942 [debug] [Thread-1 (]: On model.my_gcp_project.products: Close
+[0m13:38:02.122968 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '40438726-5f3d-4c18-8034-b2263b43cb8b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD05106080>]}
+[0m13:38:02.124942 [info ] [Thread-1 (]: 1 of 1 OK created sql table model Landing.Products ............................. [[32mOK[0m in 1.43s]
+[0m13:38:02.126944 [debug] [Thread-1 (]: Finished running node model.my_gcp_project.products
+[0m13:38:02.129945 [debug] [MainThread]: On master: COMMIT
+[0m13:38:02.130943 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:38:02.131943 [debug] [MainThread]: Connection 'list_APIData' was properly closed.
+[0m13:38:02.132944 [debug] [MainThread]: Connection 'list_APIData_Landing' was properly closed.
+[0m13:38:02.134943 [debug] [MainThread]: Connection 'model.my_gcp_project.products' was properly closed.
+[0m13:38:02.134943 [info ] [MainThread]: 
+[0m13:38:02.135944 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 2.38 seconds (2.38s).
+[0m13:38:02.137945 [debug] [MainThread]: Command end result
+[0m13:38:02.205189 [info ] [MainThread]: 
+[0m13:38:02.206189 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:38:02.207188 [info ] [MainThread]: 
+[0m13:38:02.208189 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m13:38:02.211188 [debug] [MainThread]: Command `dbt run` succeeded at 13:38:02.210188 after 12.69 seconds
+[0m13:38:02.212186 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD05070580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD0957E890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CD0525CFA0>]}
+[0m13:38:02.213186 [debug] [MainThread]: Flushing usage events
+[0m13:52:36.049147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A960C30520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A9636574F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A963657310>]}
+
+
+============================== 13:52:36.057151 | 16b94780-7835-43d0-bf91-83018c54a278 ==============================
+[0m13:52:36.057151 [info ] [MainThread]: Running with dbt=1.8.6
+[0m13:52:36.058150 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'D:\\ELTv2\\logs', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\kumar\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --profiles-dir C:\\Users\\kumar\\.dbt --project-dir D:\\ELTv2', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m13:52:37.593346 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A960CC5B40>]}
+[0m13:52:37.747034 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A962FF2E00>]}
+[0m13:52:37.748035 [info ] [MainThread]: Registered adapter: sqlserver=1.8.2
+[0m13:52:37.857009 [debug] [MainThread]: checksum: 2f2fb10c73cafe3e79aa104295a8244291492b32b5598ce46af770f7d0bd5194, vars: {}, profile: , target: , version: 1.8.6
+[0m13:52:38.425112 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:52:38.426753 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:52:38.443735 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.my_gcp_project.add_columns
+[0m13:52:38.507734 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A965179BA0>]}
+[0m13:52:38.813935 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A963E93A90>]}
+[0m13:52:38.814940 [info ] [MainThread]: Found 1 model, 492 macros
+[0m13:52:38.815942 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A960DEDA20>]}
+[0m13:52:38.820603 [info ] [MainThread]: 
+[0m13:52:38.822601 [debug] [MainThread]: Acquiring new sqlserver connection 'master'
+[0m13:52:38.826600 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData'
+[0m13:52:38.867603 [debug] [ThreadPool]: dbt-sqlserver
+[0m13:52:38.868604 [debug] [ThreadPool]: Using sqlserver connection "list_APIData"
+[0m13:52:38.869602 [debug] [ThreadPool]: On list_APIData: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData"} */
+select  name as [schema]
+    from sys.schemas with (nolock) 
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m13:52:38.870603 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:52:38.871604 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:52:39.226086 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m13:52:39.249747 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m13:52:39.251748 [debug] [ThreadPool]: On list_APIData: Close
+[0m13:52:39.253749 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData_Landing'
+[0m13:52:39.267748 [debug] [ThreadPool]: dbt-sqlserver
+[0m13:52:39.268747 [debug] [ThreadPool]: Using sqlserver connection "list_APIData_Landing"
+[0m13:52:39.269748 [debug] [ThreadPool]: On list_APIData_Landing: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData_Landing"} */
+USE [APIData];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'Landing'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m13:52:39.270749 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:52:39.270749 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:52:39.271748 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m13:52:39.367752 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m13:52:39.369753 [debug] [ThreadPool]: On list_APIData_Landing: ROLLBACK
+[0m13:52:39.370753 [debug] [ThreadPool]: On list_APIData_Landing: Close
+[0m13:52:39.372748 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A9650A8AC0>]}
+[0m13:52:39.373748 [debug] [MainThread]: On master: COMMIT
+[0m13:52:39.374754 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m13:52:39.375753 [info ] [MainThread]: 
+[0m13:52:39.384355 [debug] [Thread-1 (]: Began running node model.my_gcp_project.products
+[0m13:52:39.385350 [info ] [Thread-1 (]: 1 of 1 START sql table model Landing.Products .................................. [RUN]
+[0m13:52:39.386352 [debug] [Thread-1 (]: Acquiring new sqlserver connection 'model.my_gcp_project.products'
+[0m13:52:39.388352 [debug] [Thread-1 (]: Began compiling node model.my_gcp_project.products
+[0m13:52:39.405348 [debug] [Thread-1 (]: Writing injected SQL for node "model.my_gcp_project.products"
+[0m13:52:39.406349 [debug] [Thread-1 (]: Began executing node model.my_gcp_project.products
+[0m13:52:39.492544 [debug] [Thread-1 (]: dbt-sqlserver
+[0m13:52:39.505298 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw"
+[0m13:52:39.518254 [debug] [Thread-1 (]: dbt-sqlserver
+[0m13:52:39.519428 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:52:39.520006 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+        USE [APIData];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'APIData'
+        and refs.referenced_schema_name = 'Landing'
+        and refs.referenced_entity_name = 'Products__dbt_tmp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-sqlserver');
+
+      
+[0m13:52:39.521141 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m13:52:39.522244 [debug] [Thread-1 (]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:52:39.648657 [debug] [Thread-1 (]: sqlserver adapter: Connected to db: APIData
+[0m13:52:39.715661 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:52:39.718619 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:52:39.719619 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+      
+    
+    USE [APIData];
+    EXEC('DROP view IF EXISTS "Landing"."Products__dbt_tmp__dbt_tmp_vw";');
+
+[0m13:52:39.741617 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:52:39.774617 [debug] [Thread-1 (]: Writing runtime sql for node "model.my_gcp_project.products"
+[0m13:52:39.778617 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:52:39.779621 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+  
+    USE [APIData];
+    USE [APIData];
+    
+    
+
+    
+
+    
+    USE [APIData];
+    EXEC('
+        create view "Landing"."Products__dbt_tmp__dbt_tmp_vw" as -- transformation/products.sql
+
+
+
+
+with raw_data as (
+    select
+        -- Extract the main fields from the JSON in _airbyte_data
+        JSON_VALUE(_airbyte_data, ''$.id'') as product_id,
+        JSON_VALUE(_airbyte_data, ''$.title'') as product_title,
+        JSON_VALUE(_airbyte_data, ''$.description'') as product_description,
+        JSON_VALUE(_airbyte_data, ''$.category'') as product_category,
+        JSON_VALUE(_airbyte_data, ''$.price'') as product_price,
+        JSON_VALUE(_airbyte_data, ''$.discountPercentage'') as discount_percentage,
+        JSON_VALUE(_airbyte_data, ''$.rating'') as product_rating,
+        JSON_VALUE(_airbyte_data, ''$.stock'') as stock_quantity,
+        JSON_VALUE(_airbyte_data, ''$.sku'') as sku,
+        JSON_VALUE(_airbyte_data, ''$.weight'') as product_weight,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.width'') as product_width,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.height'') as product_height,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.depth'') as product_depth,
+        JSON_VALUE(_airbyte_data, ''$.warrantyInformation'') as warranty_info,
+        JSON_VALUE(_airbyte_data, ''$.shippingInformation'') as shipping_info,
+        JSON_VALUE(_airbyte_data, ''$.availabilityStatus'') as availability_status,
+        JSON_VALUE(_airbyte_data, ''$.meta.createdAt'') as created_at,
+        JSON_VALUE(_airbyte_data, ''$.meta.updatedAt'') as updated_at
+    from Landing.Landing_raw__stream_API_Source_Connector
+)
+
+select * from raw_data;;
+    ')
+
+EXEC('
+            SELECT * INTO "APIData"."Landing"."Products__dbt_tmp" FROM "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-sqlserver'');
+
+        ')
+
+    
+    EXEC('DROP VIEW IF EXISTS Landing.Products__dbt_tmp__dbt_tmp_vw')
+
+
+
+    
+    use [APIData];
+    if EXISTS (
+        SELECT *
+        FROM sys.indexes with (nolock)
+        WHERE name = 'Landing_Products__dbt_tmp_cci'
+        AND object_id=object_id('Landing_Products__dbt_tmp')
+    )
+    DROP index "Landing"."Products__dbt_tmp".Landing_Products__dbt_tmp_cci
+    CREATE CLUSTERED COLUMNSTORE INDEX Landing_Products__dbt_tmp_cci
+    ON "Landing"."Products__dbt_tmp"
+
+   
+
+
+  
+[0m13:52:39.848195 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:52:39.850193 [debug] [Thread-1 (]: On model.my_gcp_project.products: ROLLBACK
+[0m13:52:39.851195 [debug] [Thread-1 (]: On model.my_gcp_project.products: Close
+[0m13:52:39.852195 [error] [Thread-1 (]: [31mUnhandled error while executing target\run\my_gcp_project\transformation\products.sql[0m
+('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'Landing.Landing_raw__stream_API_Source_Connector'. (208) (SQLMoreResults)")
+[0m13:52:40.246848 [debug] [Thread-1 (]: Traceback (most recent call last):
+  File "D:\ELTv2\venv\lib\site-packages\dbt\task\base.py", line 368, in safe_run
+    result = self.compile_and_execute(manifest, ctx)
+  File "D:\ELTv2\venv\lib\site-packages\dbt\task\base.py", line 314, in compile_and_execute
+    result = self.run(ctx.node, manifest)
+  File "D:\ELTv2\venv\lib\site-packages\dbt\task\base.py", line 415, in run
+    return self.execute(compiled_node, manifest)
+  File "D:\ELTv2\venv\lib\site-packages\dbt\task\run.py", line 298, in execute
+    result = MacroGenerator(
+  File "D:\ELTv2\venv\lib\site-packages\dbt\clients\jinja.py", line 84, in __call__
+    return self.call_macro(*args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\dbt_common\clients\jinja.py", line 299, in call_macro
+    return macro(*args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\runtime.py", line 768, in __call__
+    return self._invoke(arguments, autoescape)
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\runtime.py", line 782, in _invoke
+    rv = self._func(*arguments)
+  File "<template>", line 82, in macro
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\sandbox.py", line 394, in call
+    return __context.call(__obj, *args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\runtime.py", line 303, in call
+    return __obj(*args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\dbt\clients\jinja.py", line 84, in __call__
+    return self.call_macro(*args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\dbt_common\clients\jinja.py", line 299, in call_macro
+    return macro(*args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\runtime.py", line 768, in __call__
+    return self._invoke(arguments, autoescape)
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\runtime.py", line 782, in _invoke
+    rv = self._func(*arguments)
+  File "<template>", line 52, in macro
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\sandbox.py", line 394, in call
+    return __context.call(__obj, *args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\jinja2\runtime.py", line 303, in call
+    return __obj(*args, **kwargs)
+  File "D:\ELTv2\venv\lib\site-packages\dbt\adapters\base\impl.py", line 380, in execute
+    return self.connections.execute(sql=sql, auto_begin=auto_begin, fetch=fetch, limit=limit)
+  File "D:\ELTv2\venv\lib\site-packages\dbt\adapters\fabric\fabric_connection_manager.py", line 530, in execute
+    while cursor.nextset():
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'Landing.Landing_raw__stream_API_Source_Connector'. (208) (SQLMoreResults)")
+
+[0m13:52:40.249852 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '16b94780-7835-43d0-bf91-83018c54a278', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A96523C100>]}
+[0m13:52:40.250854 [error] [Thread-1 (]: 1 of 1 ERROR creating sql table model Landing.Products ......................... [[31mERROR[0m in 0.86s]
+[0m13:52:40.252421 [debug] [Thread-1 (]: Finished running node model.my_gcp_project.products
+[0m13:52:40.256425 [debug] [MainThread]: On master: COMMIT
+[0m13:52:40.257426 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:52:40.257426 [debug] [MainThread]: Connection 'list_APIData' was properly closed.
+[0m13:52:40.258426 [debug] [MainThread]: Connection 'list_APIData_Landing' was properly closed.
+[0m13:52:40.259426 [debug] [MainThread]: Connection 'model.my_gcp_project.products' was properly closed.
+[0m13:52:40.259426 [info ] [MainThread]: 
+[0m13:52:40.261422 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.44 seconds (1.44s).
+[0m13:52:40.264429 [debug] [MainThread]: Command end result
+[0m13:52:40.323420 [info ] [MainThread]: 
+[0m13:52:40.325431 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m13:52:40.326423 [info ] [MainThread]: 
+[0m13:52:40.328423 [error] [MainThread]:   ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'Landing.Landing_raw__stream_API_Source_Connector'. (208) (SQLMoreResults)")
+[0m13:52:40.330425 [info ] [MainThread]: 
+[0m13:52:40.331425 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[0m13:52:40.335426 [debug] [MainThread]: Command `dbt run` failed at 13:52:40.334424 after 4.47 seconds
+[0m13:52:40.336423 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A960C30520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A96514E5F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A963FBBA00>]}
+[0m13:52:40.337422 [debug] [MainThread]: Flushing usage events
+[0m13:55:22.745915 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF0700520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF310F4F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF310F310>]}
+
+
+============================== 13:55:22.753912 | fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa ==============================
+[0m13:55:22.753912 [info ] [MainThread]: Running with dbt=1.8.6
+[0m13:55:22.754915 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'D:\\ELTv2\\logs', 'debug': 'False', 'profiles_dir': 'C:\\Users\\kumar\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --profiles-dir C:\\Users\\kumar\\.dbt --project-dir D:\\ELTv2', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m13:55:24.325526 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF0795B40>]}
+[0m13:55:24.778270 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF2AC6E00>]}
+[0m13:55:24.781111 [info ] [MainThread]: Registered adapter: sqlserver=1.8.2
+[0m13:55:24.853257 [debug] [MainThread]: checksum: 2f2fb10c73cafe3e79aa104295a8244291492b32b5598ce46af770f7d0bd5194, vars: {}, profile: , target: , version: 1.8.6
+[0m13:55:25.680473 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:55:25.681471 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:55:25.714887 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.my_gcp_project.add_columns
+[0m13:55:25.834683 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF4C39BA0>]}
+[0m13:55:26.412827 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF3953A90>]}
+[0m13:55:26.415840 [info ] [MainThread]: Found 1 model, 492 macros
+[0m13:55:26.417829 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF08BDA20>]}
+[0m13:55:26.425825 [info ] [MainThread]: 
+[0m13:55:26.427827 [debug] [MainThread]: Acquiring new sqlserver connection 'master'
+[0m13:55:26.432824 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData'
+[0m13:55:26.475826 [debug] [ThreadPool]: dbt-sqlserver
+[0m13:55:26.476825 [debug] [ThreadPool]: Using sqlserver connection "list_APIData"
+[0m13:55:26.478825 [debug] [ThreadPool]: On list_APIData: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData"} */
+select  name as [schema]
+    from sys.schemas with (nolock) 
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m13:55:26.480840 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:55:26.481829 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:55:26.930625 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m13:55:26.952619 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m13:55:26.955618 [debug] [ThreadPool]: On list_APIData: Close
+[0m13:55:26.958619 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData_Landing'
+[0m13:55:26.988230 [debug] [ThreadPool]: dbt-sqlserver
+[0m13:55:26.990229 [debug] [ThreadPool]: Using sqlserver connection "list_APIData_Landing"
+[0m13:55:26.992240 [debug] [ThreadPool]: On list_APIData_Landing: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData_Landing"} */
+USE [APIData];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'Landing'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m13:55:26.995237 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:55:26.997231 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:55:26.999240 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m13:55:27.030226 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m13:55:27.036235 [debug] [ThreadPool]: On list_APIData_Landing: ROLLBACK
+[0m13:55:27.040238 [debug] [ThreadPool]: On list_APIData_Landing: Close
+[0m13:55:27.046284 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF4B68AC0>]}
+[0m13:55:27.048549 [debug] [MainThread]: On master: COMMIT
+[0m13:55:27.050788 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m13:55:27.052455 [info ] [MainThread]: 
+[0m13:55:27.062628 [debug] [Thread-1 (]: Began running node model.my_gcp_project.products
+[0m13:55:27.064632 [info ] [Thread-1 (]: 1 of 1 START sql table model Landing.Products .................................. [RUN]
+[0m13:55:27.068622 [debug] [Thread-1 (]: Acquiring new sqlserver connection 'model.my_gcp_project.products'
+[0m13:55:27.072153 [debug] [Thread-1 (]: Began compiling node model.my_gcp_project.products
+[0m13:55:27.113233 [debug] [Thread-1 (]: Writing injected SQL for node "model.my_gcp_project.products"
+[0m13:55:27.116224 [debug] [Thread-1 (]: Began executing node model.my_gcp_project.products
+[0m13:55:27.250787 [debug] [Thread-1 (]: dbt-sqlserver
+[0m13:55:27.275788 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw"
+[0m13:55:27.305791 [debug] [Thread-1 (]: dbt-sqlserver
+[0m13:55:27.308796 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:55:27.310788 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+        USE [APIData];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'APIData'
+        and refs.referenced_schema_name = 'Landing'
+        and refs.referenced_entity_name = 'Products__dbt_tmp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-sqlserver');
+
+      
+[0m13:55:27.313798 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m13:55:27.315797 [debug] [Thread-1 (]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m13:55:27.429933 [debug] [Thread-1 (]: sqlserver adapter: Connected to db: APIData
+[0m13:55:27.452931 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:55:27.458934 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:55:27.459933 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+      
+    
+    USE [APIData];
+    EXEC('DROP view IF EXISTS "Landing"."Products__dbt_tmp__dbt_tmp_vw";');
+
+[0m13:55:27.482973 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:55:27.534933 [debug] [Thread-1 (]: Writing runtime sql for node "model.my_gcp_project.products"
+[0m13:55:27.536931 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:55:27.537934 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+  
+    USE [APIData];
+    USE [APIData];
+    
+    
+
+    
+
+    
+    USE [APIData];
+    EXEC('
+        create view "Landing"."Products__dbt_tmp__dbt_tmp_vw" as -- transformation/products.sql
+
+
+
+
+with raw_data as (
+    select
+        -- Extract the main fields from the JSON in _airbyte_data
+        JSON_VALUE(_airbyte_data, ''$.id'') as product_id,
+        JSON_VALUE(_airbyte_data, ''$.title'') as product_title,
+        JSON_VALUE(_airbyte_data, ''$.description'') as product_description,
+        JSON_VALUE(_airbyte_data, ''$.category'') as product_category,
+        JSON_VALUE(_airbyte_data, ''$.price'') as product_price,
+        JSON_VALUE(_airbyte_data, ''$.discountPercentage'') as discount_percentage,
+        JSON_VALUE(_airbyte_data, ''$.rating'') as product_rating,
+        JSON_VALUE(_airbyte_data, ''$.stock'') as stock_quantity,
+        JSON_VALUE(_airbyte_data, ''$.sku'') as sku,
+        JSON_VALUE(_airbyte_data, ''$.weight'') as product_weight,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.width'') as product_width,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.height'') as product_height,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.depth'') as product_depth,
+        JSON_VALUE(_airbyte_data, ''$.warrantyInformation'') as warranty_info,
+        JSON_VALUE(_airbyte_data, ''$.shippingInformation'') as shipping_info,
+        JSON_VALUE(_airbyte_data, ''$.availabilityStatus'') as availability_status,
+        JSON_VALUE(_airbyte_data, ''$.meta.createdAt'') as created_at,
+        JSON_VALUE(_airbyte_data, ''$.meta.updatedAt'') as updated_at
+    from Landing.Landing_raw__stream_API_Source_Connector
+)
+
+select * from raw_data;;
+    ')
+
+EXEC('
+            SELECT * INTO "APIData"."Landing"."Products__dbt_tmp" FROM "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-sqlserver'');
+
+        ')
+
+    
+    EXEC('DROP VIEW IF EXISTS Landing.Products__dbt_tmp__dbt_tmp_vw')
+
+
+
+    
+    use [APIData];
+    if EXISTS (
+        SELECT *
+        FROM sys.indexes with (nolock)
+        WHERE name = 'Landing_Products__dbt_tmp_cci'
+        AND object_id=object_id('Landing_Products__dbt_tmp')
+    )
+    DROP index "Landing"."Products__dbt_tmp".Landing_Products__dbt_tmp_cci
+    CREATE CLUSTERED COLUMNSTORE INDEX Landing_Products__dbt_tmp_cci
+    ON "Landing"."Products__dbt_tmp"
+
+   
+
+
+  
+[0m13:55:27.696963 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:55:27.720966 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:55:27.721966 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+USE [APIData];
+      EXEC sp_rename 'Landing.Products__dbt_tmp', 'Products'
+[0m13:55:27.747419 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:55:27.794822 [debug] [Thread-1 (]: On model.my_gcp_project.products: COMMIT
+[0m13:55:27.801824 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_backup"
+[0m13:55:27.806347 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m13:55:27.808349 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+    USE [APIData];
+    EXEC('DROP table IF EXISTS "Landing"."Products__dbt_backup";');
+
+[0m13:55:27.831402 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m13:55:27.836395 [debug] [Thread-1 (]: On model.my_gcp_project.products: Close
+[0m13:55:27.841404 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'fab1995a-0d7c-4bd1-ada6-ac3cfc2bb6aa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF0796020>]}
+[0m13:55:27.843399 [info ] [Thread-1 (]: 1 of 1 OK created sql table model Landing.Products ............................. [[32mOK[0m in 0.77s]
+[0m13:55:27.844406 [debug] [Thread-1 (]: Finished running node model.my_gcp_project.products
+[0m13:55:27.847397 [debug] [MainThread]: On master: COMMIT
+[0m13:55:27.848396 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:55:27.849629 [debug] [MainThread]: Connection 'list_APIData' was properly closed.
+[0m13:55:27.850394 [debug] [MainThread]: Connection 'list_APIData_Landing' was properly closed.
+[0m13:55:27.851394 [debug] [MainThread]: Connection 'model.my_gcp_project.products' was properly closed.
+[0m13:55:27.852397 [info ] [MainThread]: 
+[0m13:55:27.853395 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.42 seconds (1.42s).
+[0m13:55:27.857396 [debug] [MainThread]: Command end result
+[0m13:55:27.979592 [info ] [MainThread]: 
+[0m13:55:27.982604 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:55:27.984599 [info ] [MainThread]: 
+[0m13:55:27.987605 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m13:55:28.000704 [debug] [MainThread]: Command `dbt run` succeeded at 13:55:28.000704 after 5.44 seconds
+[0m13:55:28.002706 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF0700520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF08F0FD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021DF4BC98D0>]}
+[0m13:55:28.007722 [debug] [MainThread]: Flushing usage events
+[0m15:59:51.488277 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBCDD0460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBF7DE110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBF7DE2F0>]}
+
+
+============================== 15:59:51.497278 | dd45257a-7f4f-43d2-8428-9c3757dd5c02 ==============================
+[0m15:59:51.497278 [info ] [MainThread]: Running with dbt=1.8.6
+[0m15:59:51.498244 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\kumar\\.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'D:\\ELTv2\\logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir C:\\Users\\kumar\\.dbt --project-dir D:\\ELTv2', 'send_anonymous_usage_stats': 'True'}
+[0m15:59:56.148175 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBF74BA00>]}
+[0m15:59:56.303542 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBEC3A470>]}
+[0m15:59:56.306377 [info ] [MainThread]: Registered adapter: sqlserver=1.8.2
+[0m15:59:56.402621 [debug] [MainThread]: checksum: 2f2fb10c73cafe3e79aa104295a8244291492b32b5598ce46af770f7d0bd5194, vars: {}, profile: , target: , version: 1.8.6
+[0m15:59:59.947905 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:59:59.956905 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:59:59.995905 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.my_gcp_project.add_columns
+[0m16:00:00.229072 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCC1309AE0>]}
+[0m16:00:00.920572 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCC1238070>]}
+[0m16:00:00.922781 [info ] [MainThread]: Found 1 model, 492 macros
+[0m16:00:00.924780 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBCF8FC70>]}
+[0m16:00:00.931778 [info ] [MainThread]: 
+[0m16:00:00.937778 [debug] [MainThread]: Acquiring new sqlserver connection 'master'
+[0m16:00:00.943780 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData'
+[0m16:00:01.016265 [debug] [ThreadPool]: dbt-sqlserver
+[0m16:00:01.019654 [debug] [ThreadPool]: Using sqlserver connection "list_APIData"
+[0m16:00:01.021266 [debug] [ThreadPool]: On list_APIData: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData"} */
+select  name as [schema]
+    from sys.schemas with (nolock) 
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m16:00:01.022264 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:00:01.024268 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m16:00:01.801843 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m16:00:01.861453 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m16:00:01.863464 [debug] [ThreadPool]: On list_APIData: Close
+[0m16:00:01.867466 [debug] [ThreadPool]: Acquiring new sqlserver connection 'list_APIData_Landing'
+[0m16:00:01.884464 [debug] [ThreadPool]: dbt-sqlserver
+[0m16:00:01.886464 [debug] [ThreadPool]: Using sqlserver connection "list_APIData_Landing"
+[0m16:00:01.887463 [debug] [ThreadPool]: On list_APIData_Landing: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "connection_name": "list_APIData_Landing"} */
+USE [APIData];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t with (nolock)
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v with (nolock)
+    )
+    select * from base
+    where [schema] like 'Landing'
+    
+    OPTION (LABEL = 'dbt-sqlserver');
+
+  
+[0m16:00:01.888465 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:00:01.889465 [debug] [ThreadPool]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m16:00:01.891463 [debug] [ThreadPool]: sqlserver adapter: Connected to db: APIData
+[0m16:00:02.025689 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m16:00:02.030686 [debug] [ThreadPool]: On list_APIData_Landing: ROLLBACK
+[0m16:00:02.033684 [debug] [ThreadPool]: On list_APIData_Landing: Close
+[0m16:00:02.038682 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCC01326B0>]}
+[0m16:00:02.040683 [debug] [MainThread]: On master: COMMIT
+[0m16:00:02.041683 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m16:00:02.043711 [info ] [MainThread]: 
+[0m16:00:02.052688 [debug] [Thread-1 (]: Began running node model.my_gcp_project.products
+[0m16:00:02.054687 [info ] [Thread-1 (]: 1 of 1 START sql table model Landing.Products .................................. [RUN]
+[0m16:00:02.056685 [debug] [Thread-1 (]: Acquiring new sqlserver connection 'model.my_gcp_project.products'
+[0m16:00:02.058686 [debug] [Thread-1 (]: Began compiling node model.my_gcp_project.products
+[0m16:00:02.092005 [debug] [Thread-1 (]: Writing injected SQL for node "model.my_gcp_project.products"
+[0m16:00:02.096047 [debug] [Thread-1 (]: Began executing node model.my_gcp_project.products
+[0m16:00:02.241177 [debug] [Thread-1 (]: dbt-sqlserver
+[0m16:00:02.262172 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw"
+[0m16:00:02.275172 [debug] [Thread-1 (]: dbt-sqlserver
+[0m16:00:02.276172 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m16:00:02.278173 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+        USE [APIData];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'APIData'
+        and refs.referenced_schema_name = 'Landing'
+        and refs.referenced_entity_name = 'Products__dbt_tmp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-sqlserver');
+
+      
+[0m16:00:02.278173 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:00:02.279516 [debug] [Thread-1 (]: sqlserver adapter: Using connection string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=34.65.104.120,1433;Database=APIData;UID={sqlserver};PWD=***;encrypt=Yes;TrustServerCertificate=Yes;APP=dbt-sqlserver/1.8.2
+[0m16:00:02.394222 [debug] [Thread-1 (]: sqlserver adapter: Connected to db: APIData
+[0m16:00:02.455223 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:00:02.459223 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m16:00:02.460224 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+      
+    
+    USE [APIData];
+    EXEC('DROP view IF EXISTS "Landing"."Products__dbt_tmp__dbt_tmp_vw";');
+
+[0m16:00:02.482226 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:00:02.519223 [debug] [Thread-1 (]: Writing runtime sql for node "model.my_gcp_project.products"
+[0m16:00:02.522224 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m16:00:02.524224 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+  
+    USE [APIData];
+    USE [APIData];
+    
+    
+
+    
+
+    
+    USE [APIData];
+    EXEC('
+        create view "Landing"."Products__dbt_tmp__dbt_tmp_vw" as -- transformation/products.sql
+
+
+
+
+with raw_data as (
+    select
+        -- Extract the main fields from the JSON in _airbyte_data
+        JSON_VALUE(_airbyte_data, ''$.id'') as product_id,
+        JSON_VALUE(_airbyte_data, ''$.title'') as product_title,
+        JSON_VALUE(_airbyte_data, ''$.description'') as product_description,
+        JSON_VALUE(_airbyte_data, ''$.category'') as product_category,
+        JSON_VALUE(_airbyte_data, ''$.price'') as product_price,
+        JSON_VALUE(_airbyte_data, ''$.discountPercentage'') as discount_percentage,
+        JSON_VALUE(_airbyte_data, ''$.rating'') as product_rating,
+        JSON_VALUE(_airbyte_data, ''$.stock'') as stock_quantity,
+        JSON_VALUE(_airbyte_data, ''$.sku'') as sku,
+        JSON_VALUE(_airbyte_data, ''$.weight'') as product_weight,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.width'') as product_width,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.height'') as product_height,
+        JSON_VALUE(_airbyte_data, ''$.dimensions.depth'') as product_depth,
+        JSON_VALUE(_airbyte_data, ''$.warrantyInformation'') as warranty_info,
+        JSON_VALUE(_airbyte_data, ''$.shippingInformation'') as shipping_info,
+        JSON_VALUE(_airbyte_data, ''$.availabilityStatus'') as availability_status,
+        JSON_VALUE(_airbyte_data, ''$.meta.createdAt'') as created_at,
+        JSON_VALUE(_airbyte_data, ''$.meta.updatedAt'') as updated_at
+    from Landing.Landing_raw__stream_API_Source_Connector
+)
+
+select * from raw_data;;
+    ')
+
+EXEC('
+            SELECT * INTO "APIData"."Landing"."Products__dbt_tmp" FROM "APIData"."Landing"."Products__dbt_tmp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-sqlserver'');
+
+        ')
+
+    
+    EXEC('DROP VIEW IF EXISTS Landing.Products__dbt_tmp__dbt_tmp_vw')
+
+
+
+    
+    use [APIData];
+    if EXISTS (
+        SELECT *
+        FROM sys.indexes with (nolock)
+        WHERE name = 'Landing_Products__dbt_tmp_cci'
+        AND object_id=object_id('Landing_Products__dbt_tmp')
+    )
+    DROP index "Landing"."Products__dbt_tmp".Landing_Products__dbt_tmp_cci
+    CREATE CLUSTERED COLUMNSTORE INDEX Landing_Products__dbt_tmp_cci
+    ON "Landing"."Products__dbt_tmp"
+
+   
+
+
+  
+[0m16:00:02.725301 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:00:02.746707 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m16:00:02.748706 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+USE [APIData];
+      EXEC sp_rename 'Landing.Products', 'Products__dbt_backup'
+[0m16:00:03.157953 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:00:03.178301 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m16:00:03.179298 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+USE [APIData];
+      EXEC sp_rename 'Landing.Products__dbt_tmp', 'Products'
+[0m16:00:03.204298 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:00:03.286474 [debug] [Thread-1 (]: On model.my_gcp_project.products: COMMIT
+[0m16:00:03.299476 [debug] [Thread-1 (]: Applying DROP to: "APIData"."Landing"."Products__dbt_backup"
+[0m16:00:03.304710 [debug] [Thread-1 (]: Using sqlserver connection "model.my_gcp_project.products"
+[0m16:00:03.306470 [debug] [Thread-1 (]: On model.my_gcp_project.products: /* {"app": "dbt", "dbt_version": "1.8.6", "profile_name": "my_gcp_project", "target_name": "dev", "node_id": "model.my_gcp_project.products"} */
+
+      
+    USE [APIData];
+    EXEC('DROP table IF EXISTS "Landing"."Products__dbt_backup";');
+
+[0m16:00:03.336473 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:00:03.341473 [debug] [Thread-1 (]: On model.my_gcp_project.products: Close
+[0m16:00:03.347472 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'dd45257a-7f4f-43d2-8428-9c3757dd5c02', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBCE65F60>]}
+[0m16:00:03.349475 [info ] [Thread-1 (]: 1 of 1 OK created sql table model Landing.Products ............................. [[32mOK[0m in 1.29s]
+[0m16:00:03.352480 [debug] [Thread-1 (]: Finished running node model.my_gcp_project.products
+[0m16:00:03.356477 [debug] [MainThread]: On master: COMMIT
+[0m16:00:03.357477 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:00:03.359477 [debug] [MainThread]: Connection 'list_APIData' was properly closed.
+[0m16:00:03.359477 [debug] [MainThread]: Connection 'list_APIData_Landing' was properly closed.
+[0m16:00:03.360475 [debug] [MainThread]: Connection 'model.my_gcp_project.products' was properly closed.
+[0m16:00:03.362475 [info ] [MainThread]: 
+[0m16:00:03.364470 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 2.43 seconds (2.43s).
+[0m16:00:03.368478 [debug] [MainThread]: Command end result
+[0m16:00:03.471354 [info ] [MainThread]: 
+[0m16:00:03.475352 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:00:03.477347 [info ] [MainThread]: 
+[0m16:00:03.479347 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m16:00:03.484348 [debug] [MainThread]: Command `dbt run` succeeded at 16:00:03.484348 after 12.13 seconds
+[0m16:00:03.487347 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBCDD0460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBFF081F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CCBFF0A170>]}
+[0m16:00:03.489347 [debug] [MainThread]: Flushing usage events

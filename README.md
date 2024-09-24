@@ -1,7 +1,7 @@
 
 # Enterprise ELT Framework
 
-![ETL](https://img.shields.io/badge/ETL-Airbyte-blue) ![FastAPI](https://img.shields.io/badge/API-FastAPI-green) ![Docker](https://img.shields.io/badge/Docker-Containerization-orange) ![GCP](https://img.shields.io/badge/Cloud-GCP-blue) ![Prefect](https://img.shields.io/badge/Orchestration-Prefect-purple) ![SSAS](https://img.shields.io/badge/Analytics-SSAS-yellow) ![PowerBI](https://img.shields.io/badge/Visualization-PowerBI-orange)
+![ETL](https://img.shields.io/badge/ETL-Airbyte-blue) ![FastAPI](https://img.shields.io/badge/API-FastAPI-green) ![Docker](https://img.shields.io/badge/Containerization-Docker-orange) ![GCP](https://img.shields.io/badge/Cloud-GCP-blue) ![Prefect](https://img.shields.io/badge/Orchestration-Prefect-purple) ![SSAS](https://img.shields.io/badge/Analytics-SSAS-yellow) ![PowerBI](https://img.shields.io/badge/Visualization-PowerBI-orange)
 
 ## Project Overview
 This project demonstrates an end-to-end Enterprise ELT (Extract, Load, Transform) pipeline from an API source to cloud storage, transformation using dbt, and finally visualization through Power BI connected to an SQL Server Analysis Services (SSAS) cube. This project combines modern data engineering practices with cloud solutions and business intelligence tools.

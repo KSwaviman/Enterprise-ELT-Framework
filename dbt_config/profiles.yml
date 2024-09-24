@@ -1,0 +1,14 @@
+my_gcp_project:
+  outputs:
+    dev:
+      database: APIData
+      host: 34.65.104.120
+      password: password
+      port: 1433
+      threads: 1
+      type: sqlserver
+      user: sqlserver
+      schema: Landing
+      driver: "ODBC Driver 17 for SQL Server"
+      trust_cert: True
+  target: dev

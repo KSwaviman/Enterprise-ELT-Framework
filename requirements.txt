@@ -1,9 +1,12 @@
-airbyte-cdk
-apache-airflow
-apache-airflow-providers-airbyte
-dbt-core
-dbt-sqlserver
-prefect 
-prefect-airbyte 
-prefect-dbt
-pydantic==1.10.7
+requests==2.32.0
+prefect
+prefect-dbt==0.6.1
+prefect-airbyte>=0.1.0
+# pydantic==1.10.9
+# griffe==0.25.5
+# anyio>=3.0.0,<4.0.0
+pydantic
+griffe
+anyio
+dbt-core==1.8.5
+dbt-postgres==1.8.2
