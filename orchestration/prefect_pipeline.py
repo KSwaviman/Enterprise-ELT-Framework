@@ -1,4 +1,5 @@
 import os
+import time
 
 # Set environment variables before importing Prefect
 os.environ["PREFECT_API_URL"] = "http://127.0.0.1:4200/api"
@@ -9,7 +10,7 @@ from prefect import flow, task
 import subprocess
 import requests
 from requests.auth import HTTPBasicAuth
-import logging  # Add this line
+import logging
 from prefect.logging import get_logger
 
 logger = get_logger()
@@ -37,6 +38,25 @@ def trigger_airbyte_sync():
         response.raise_for_status()
 
 @task
+def check_dbt_directory():
+    # Check if the .dbt directory and profiles.yml exist
+    dbt_dir = "/root/.dbt"
+    profiles_path = os.path.join(dbt_dir, "profiles.yml")
+    
+    if os.path.exists(dbt_dir):
+        logger.info(f"Directory '{dbt_dir}' exists.")
+        if os.path.exists(profiles_path):
+            logger.info(f"profiles.yml found in '{dbt_dir}'.")
+        else:
+            logger.error(f"profiles.yml not found in '{dbt_dir}'.")
+    else:
+        logger.error(f"Directory '{dbt_dir}' does not exist.")
+    
+    # Add a wait timer to ensure that everything is set up before running dbt
+    logger.info("Waiting 15 seconds to ensure the environment is ready...")
+    time.sleep(15)
+
+@task
 def run_dbt_via_subprocess():
     command = ["dbt", "run"]
     env = os.environ.copy()
@@ -56,11 +76,14 @@ def run_dbt_via_subprocess():
             logger.warning("DBT Errors:\n" + result.stderr)  # Log any DBT errors
     except subprocess.CalledProcessError as e:
         logger.error(f"Error running dbt: {e.stderr}")  # Log the detailed dbt error
+        logger.error(f"DBT Command Output:\n{e.output}")
         raise
+
 
 @flow
 def elt_pipeline():
     trigger_airbyte_sync()
+    check_dbt_directory()  # Add this task to check the .dbt directory and profiles.yml
     run_dbt_via_subprocess()
 
 # Run the flow

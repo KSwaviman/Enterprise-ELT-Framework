@@ -6,14 +6,11 @@ WORKDIR /app
 
 # Copy your project files to the working directory
 COPY . /app
-
-# Copy the dbt profiles directory
+# Copy your DBT profiles to the correct location
 COPY dbt_config /root/.dbt
 
-# Copy the Prefect profile configuration
-COPY profiles.toml /root/.prefect/profiles.toml
 
-# Install system dependencies
+# Install system dependencies, including 'expect' for automation
 RUN apt-get update && apt-get install -y \
     unixodbc-dev \
     curl \
@@ -26,14 +23,19 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     sqlite3 \
     gcc \
+    expect \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Microsoft ODBC Driver for SQL Server
+# Install Microsoft's ODBC Driver 17 for SQL Server
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y unixodbc-dev
+
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Install dbt and dbt-sqlserver adapter
 RUN pip install --no-cache-dir 'dbt-core==1.8.5' 'dbt-sqlserver==1.8.2'
@@ -41,16 +43,18 @@ RUN pip install --no-cache-dir 'dbt-core==1.8.5' 'dbt-sqlserver==1.8.2'
 # Install prefect-dbt
 RUN pip install --no-cache-dir 'prefect-dbt==0.2.0'
 
-# Install other dependencies from requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
+# Copy the Prefect profile configuration
+RUN mkdir -p /root/.prefect
+COPY profiles.toml /root/.prefect/profiles.toml
 
 # Expose port 4200 for Prefect server
 EXPOSE 4200
 
+# Make the startup scripts executable
+RUN chmod +x /app/start_prefect_server.expect /app/start_prefect_and_run_flow.sh
 
-# Make the startup script executable
-RUN chmod +x /app/start_prefect_and_run_flow.sh
+# Set environment variables
+ENV PREFECT_PROFILE=default
 
-# Define the command to start Prefect server and run the flow
+# Set the default command to execute the startup script
 CMD ["/app/start_prefect_and_run_flow.sh"]
